@@ -6,7 +6,7 @@
 >
 <h:head/>
 <h:body>
-    <h2>Teams:</h2>
+    <h2>Teas</h2>
     <ol>
         <ui:repeat value="#{teamsMyBatis.allTeams}" var="team">
             <li><h:link value="#{team.name}" outcome="players?teamId=#{team.id}" /></li>
