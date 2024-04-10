@@ -24,5 +24,8 @@
             <generatedKey column="id" identity="true" sqlStatement="JDBC" />
             <ignoreColumn column="opt_lock_version" />
         </table>
+        <table schema="PUBLIC" tableName="SPONSOR">
+            <generatedKey column="id" identity="true" sqlStatement="JDBC" />
+        </table>
     </context>
 </generatorConfiguration>

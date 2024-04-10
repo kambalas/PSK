@@ -16,10 +16,18 @@
         <br/>
         <h:outputText value="hey" />
     </h:form>
+    <h:form>
+        <h:inputText value="#{sponsorMyBatis.sponsorToCreate.name}" required="true" />
+        <h:commandButton value="Add new team" actionListener="#{sponsorMyBatis.createSponsor}" action="index?faces-redirect=true"/>
+    </h:form>
 
 
-
-
+    <h2>Existing Sponsors:</h2>
+    <ul>
+        <ui:repeat value="#{sponsorMyBatis.allSponsors}" var="sponsor">
+            <li>#{sponsor.name}</li>
+        </ui:repeat>
+    </ul>
 
     <h2>Teams:</h2>
     <ol>

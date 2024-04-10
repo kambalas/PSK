@@ -6,6 +6,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -34,6 +36,14 @@ public class Player implements Serializable {
     @Version
     @Column(name = "OPT_LOCK_VERSION")
     private Integer version;
+
+    @ManyToMany
+    @JoinTable(
+            name = "PLAYER_SPONSOR",
+            joinColumns = @JoinColumn(name = "PLAYER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "SPONSOR_ID")
+    )
+    private List<Sponsor> sponsors = new ArrayList<>();
 
     public Player() {
     }

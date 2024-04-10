@@ -58,8 +58,10 @@
                     <artifactId>mybatis-generator-maven-plugin</artifactId>
                     <version>1.4.0</version>
                     <configuration>
+                        <configurationFile>${project.basedir}/src/main/resources/generatorConfig.xml</configurationFile>
                         <contexts>PlayersDB</contexts>
                         <verbose>true</verbose>
+                        <overwrite>true</overwrite>
                     </configuration>
                     <executions>
                         <execution>

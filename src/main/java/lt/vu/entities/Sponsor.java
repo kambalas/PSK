@@ -4,43 +4,44 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Team.findAll", query = "select t from Team as t")
+        @NamedQuery(name = "Sponsor.findAll", query = "select a from Sponsor as a")
 })
-@Table(name = "TEAM")
+@Table(name = "SPONSOR")
 @Getter @Setter
-public class Team {
-
-    public Team(){
-
-    }
+public class Sponsor implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "NAME")
     private String name;
 
-    @OneToMany(mappedBy = "team")
+    @ManyToMany(mappedBy = "sponsors")
     private List<Player> players = new ArrayList<>();
+
+    public Sponsor() {
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Team team = (Team) o;
-        return Objects.equals(name, team.name);
+        Sponsor sponsor = (Sponsor) o;
+        return Objects.equals(id, sponsor.id) &&
+                Objects.equals(name, sponsor.name);
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(name);
+        return Objects.hash(id, name);
     }
 }
+
